@@ -8,7 +8,7 @@ This is the most overengineered version of TicTacToe i could think of, goal was 
   Handles whose turn it is.
 
 * **Game Loop**
-  Keeps everything runnign and can handle retries if a move is invalid.
+  Keeps everything running and can handle retries if a move is invalid.
 
 * **Input Parser**
   Interprets user input like `a2` into board coordinates.
@@ -38,3 +38,4 @@ python main.py
 * Add colored CLI output
 * Add a bot opponent
 * Maybe rewrite using OOP for fun
+* Convert to board from a nested list to a numpy array
