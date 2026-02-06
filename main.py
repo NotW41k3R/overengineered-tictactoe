@@ -8,13 +8,17 @@ LEVEL_NUM = {
 }
 
 # Print the Board
-def print_board(current_state):
-        for level in current_state:
-            print("---------")
-            for block in level:
-                print(f"|{block}|", end="")
-            print()
-        print("---------")  
+def print_board(state):
+    print("      1   2   3")
+    print("    +---+---+---+")
+    
+    row_labels = ['a', 'b', 'c']
+    
+    for i, row in enumerate(state):
+        row_display = f"{row_labels[i]} | {row[0]} | {row[1]} | {row[2]} |"
+        print(f"  {row_display}")
+        print("    +---+---+---+")
+
 
 
 # Initialise a New Board
@@ -64,6 +68,31 @@ def is_move_valid(current_state, move):
         return False
 
 
+# Check Win
+def check_win(state):
+    # Horizontal Win
+    for level in state:
+        if level[0] != "_" and level[0] == level[1] == level[2]:
+            return True
+    
+    # Vertical Win
+    for i in range(3):
+        if state[0][i] != "_" and state[0][i] == state[1][i] == state[2][i]:
+            return True
+    
+    # Diagonal Win
+    if state[0][0] != "_" and state[0][0] == state[1][1] == state[2][2]:
+        return True 
+    if state[1][1] != "_" and state[2][0] == state[1][1] == state[0][2]:
+        return True 
+    return False
+
+
+# Draw
+def check_draw(state):
+    return all("_" not in row for row in state)
+
+        
 # INITIALISE BOARD
 game_is_on = True
 state = initialise_board()
@@ -95,4 +124,12 @@ else:
 
         state = place_marker(player, move, state)
         print_board(state)
+
+        if check_win(state):
+            print(f"{player} has won")
+            game_is_on = False
+        if check_draw(state):
+            print("Its a Draw")
+            game_is_on = False
+
         i = not i 
