@@ -1,0 +1,98 @@
+PLAYERS = ['X', 'O']
+POSSIBLE_LEVELS = ['a','b','c']
+POSSIBLE_BLOCKS = ['1','2','3']
+LEVEL_NUM = {
+    'a' : 0,
+    'b' : 1,
+    'c' : 2,
+}
+
+# Print the Board
+def print_board(current_state):
+        for level in current_state:
+            print("---------")
+            for block in level:
+                print(f"|{block}|", end="")
+            print()
+        print("---------")  
+
+
+# Initialise a New Board
+def initialise_board():
+    a = ["_","_","_"]
+    b = ["_","_","_"]
+    c = ["_","_","_"]
+    state = [a,b,c]
+    print_board(state)
+    return state
+
+
+# Place a marker on the board
+def place_marker(marker, move, current_state):
+    current_state[LEVEL_NUM[move[0]]][int(move[1])-1] = marker
+    return current_state
+
+
+# Ask player to play a move
+def play_move(player):
+    position = input(f"{player}'s turn: ")
+    move = parse_move(position)
+    return move
+
+
+# Parse the User inputted move
+def parse_move(position):
+    # PARSE ALPHABET
+    level = position[0]
+
+    # PARSE NUMERIC
+    block = position[1]
+    
+    move = [level,block]
+
+    return move
+
+
+# Check if a move is valid AND the cell is vacant
+def is_move_valid(current_state, move):
+    if move[0].isalpha() and move[0] in POSSIBLE_LEVELS and move[1] in POSSIBLE_BLOCKS:
+        if current_state[LEVEL_NUM[move[0]]][int(move[1])-1] == "_":
+            return True
+        else:
+            return False
+    else:
+        return False
+
+
+# INITIALISE BOARD
+game_is_on = True
+state = initialise_board()
+
+# CHOOOSE X OR O
+player1 = input("Choose X or O: ").upper()
+if player1 not in PLAYERS:
+    print("Please pick X or O")
+else:
+    if player1 == 'X':
+        player2 = 'O'
+    else:
+        player2='X'
+
+    player_list = [player1, player2]
+    i = False
+
+    while game_is_on:
+        valid_move = False
+        player = player_list[i]
+
+        while not valid_move:
+            move = play_move(player)
+            if is_move_valid(state,move):
+                valid_move = True
+            else:
+                print("Either the Cell is taken or the move is invalid")
+                valid_move = False
+
+        state = place_marker(player, move, state)
+        print_board(state)
+        i = not i 
