@@ -38,4 +38,4 @@ python main.py
 * Add colored CLI output
 * Add a bot opponent
 * Maybe rewrite using OOP for fun
-* Convert to board from a nested list to a numpy array
+* Convert the board from a nested list to a numpy array
