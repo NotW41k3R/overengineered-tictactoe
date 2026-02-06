@@ -19,8 +19,6 @@ This is the most overengineered version of TicTacToe i could think of, goal was 
 * **Board Logic**
   Stores the board state and prints the board in the terminal.
 
-All that in a single main.py
-
 ---
 
 ## How to Run
