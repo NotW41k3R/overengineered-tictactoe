@@ -20,12 +20,13 @@ This is the most overengineered version of TicTacToe i could think of, goal was 
   Stores the board state and prints the board in the terminal.
 
 ---
-
 ## How to Run
 
-Requires **Python 3+**.
+1. Make sure you have **Python 3+** installed.
+2. Install the required packages:
 
 ```bash
+pip install -r requirements.txt
 python main.py
 ```
 
