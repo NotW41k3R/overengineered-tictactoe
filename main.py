@@ -1,6 +1,3 @@
-from colorama import just_fix_windows_console, Fore, Style
-just_fix_windows_console()
-
 PLAYERS = ['X', 'O']
 POSSIBLE_LEVELS = ['a','b','c']
 POSSIBLE_BLOCKS = ['1','2','3']
@@ -9,26 +6,19 @@ LEVEL_NUM = {
     'b' : 1,
     'c' : 2,
 }
-# Color Cells
-def color_cell(value):
-    if value == "X":
-        return Fore.YELLOW + value + Fore.RED
-    if value == "O":
-        return Fore.BLUE + value + Fore.RED
-    return value
 
 # Print the Board
 def print_board(state):
-    print(Fore.RED + "      1   2   3")
-    print(Fore.RED + "    +---+---+---+")
+    print("      1   2   3")
+    print("    +---+---+---+")
     
     row_labels = ['a', 'b', 'c']
-
+    
     for i, row in enumerate(state):
-        cells = [color_cell(c) for c in row]
-        row_display = f"{row_labels[i]} | {cells[0]} | {cells[1]} | {cells[2]} |"
-        print(Fore.RED + f"  {row_display}")
-        print(Fore.RED + "    +---+---+---+")
+        row_display = f"{row_labels[i]} | {row[0]} | {row[1]} | {row[2]} |"
+        print(f"  {row_display}")
+        print("    +---+---+---+")
+
 
 
 # Initialise a New Board
@@ -49,12 +39,12 @@ def place_marker(marker, move, current_state):
 
 # Ask player to play a move
 def play_move(player):
-    position = input(Fore.GREEN + f"{player}'s turn: ")
+    position = input(f"{player}'s turn: ")
     if len(position)==2:
         move = parse_move(position)
         return move
     else:
-        print(Fore.RED + "Please Enter a 2 character coordinate, for example 'a1'")
+        print("Please Enter a 2 character coordinate, for example 'a1'")
         move = play_move(player)
         return move
 
@@ -113,9 +103,9 @@ game_is_on = True
 state = initialise_board()
 
 # CHOOOSE X OR O
-player1 = input(Fore.GREEN + "Choose X or O: ").upper()
+player1 = input("Choose X or O: ").upper()
 if player1 not in PLAYERS:
-    print(Fore.RED + "Please pick X or O")
+    print("Please pick X or O")
 else:
     if player1 == 'X':
         player2 = 'O'
@@ -134,18 +124,17 @@ else:
             if is_move_valid(state,move):
                 valid_move = True
             else:
-                print(Fore.RED + "Either the Cell is taken or the move is invalid")
+                print("Either the Cell is taken or the move is invalid")
                 valid_move = False
 
         state = place_marker(player, move, state)
         print_board(state)
 
         if check_win(state):
-            print(Fore.GREEN + f"{player} has won")
+            print(f"{player} has won")
             game_is_on = False
         if check_draw(state):
-            print(Fore.YELLOW + "It's a Draw")
+            print("Its a Draw")
             game_is_on = False
 
         i = not i 
-print(Style.RESET_ALL)
