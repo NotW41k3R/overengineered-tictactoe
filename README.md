@@ -33,8 +33,6 @@ python main.py
 
 ## Future Improvements (TODO)
 
-* Add win detection
-* Add draw detection
 * Add colored CLI output
 * Add a bot opponent
 * Maybe rewrite using OOP for fun

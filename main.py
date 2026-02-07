@@ -40,8 +40,13 @@ def place_marker(marker, move, current_state):
 # Ask player to play a move
 def play_move(player):
     position = input(f"{player}'s turn: ")
-    move = parse_move(position)
-    return move
+    if len(position)==2:
+        move = parse_move(position)
+        return move
+    else:
+        print("Please Enter a 2 character coordinate, for example 'a1'")
+        move = play_move(player)
+        return move
 
 
 # Parse the User inputted move
