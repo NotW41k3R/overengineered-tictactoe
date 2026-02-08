@@ -4,20 +4,26 @@ This is the most overengineered version of TicTacToe i could think of, goal was 
 
 ## Features
 
-* **Game State Controller**
-  Handles whose turn it is.
+* **Object-Oriented Structure**
+  Clean separation into `Board`, `Player`, and `Parser` classes.
 
-* **Game Loop**
-  Keeps everything running and can handle retries if a move is invalid.
+* **NumPy Board Representation**
+  Fast ndarray-based 3×3 game state with vectorized operations.
 
 * **Input Parser**
-  Interprets user input like `a2` into board coordinates.
+  Converts moves like `a2` into numeric coordinates.
 
 * **Move Validator**
-  Checks bounds and vacancy so no one can break the game.
+  Ensures moves are in bounds and placed on empty cells.
 
-* **Board Logic**
-  Stores the board state and prints the board in the terminal.
+* **Win/Draw Logic**
+  Uses NumPy row/column/diagonal sums for instant state evaluation.
+
+* **Game Loop**
+  Controls turn order, retries invalid actions, and runs the match flow.
+
+* **Board Renderer**
+  Prints a clear, readable representation of the current game board.
 
 ---
 ## How to Run
@@ -34,7 +40,6 @@ python main.py
 
 ## Future Improvements (TODO)
 
-* Add colored CLI output
 * Add a bot opponent
-* Maybe rewrite using OOP for fun
-* Convert the board from a nested list to a numpy array
+* ~~Maybe rewrite using OOP for fun~~
+* ~~Convert the board from a nested list to a numpy array~~
