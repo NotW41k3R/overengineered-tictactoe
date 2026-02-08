@@ -40,6 +40,11 @@ python main.py
 
 ## Future Improvements (TODO)
 
-* Add a bot opponent
 * ~~Maybe rewrite using OOP for fun~~
 * ~~Convert the board from a nested list to a numpy array~~
+* Add a bot opponent
+* Maybe Train a ML agent to act as the game’s opponent.
+* Add a difficulty selector
+* Implement a “self-play” mode (bot vs bot for training)
+* Add a replay mode (watch a stored match move-by-move)
+
