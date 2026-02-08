@@ -4,13 +4,6 @@ from player import Player
 from parser import Parser
 
 PLAYERS = ['X', 'O']
-POSSIBLE_LEVELS = ['a','b','c']
-POSSIBLE_BLOCKS = ['1','2','3']
-LEVEL_NUM = {
-    'a' : 0,
-    'b' : 1,
-    'c' : 2,
-}
 VALUE_MAP = {
     1: 'X',
     -1: 'O',
