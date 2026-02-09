@@ -4,6 +4,9 @@ This is the most overengineered version of TicTacToe i could think of, goal was 
 
 ## Features
 
+* **Bot Player**
+  A Defensive bot that defends threats across rows, columns and diagonals, it blocks all winning moves using vectorized evaluation.(Defense so good you might lose to it).
+
 * **Object-Oriented Structure**
   Clean separation into `Board`, `Player`, and `Parser` classes.
 
@@ -42,7 +45,7 @@ python main.py
 
 * ~~Maybe rewrite using OOP for fun~~
 * ~~Convert the board from a nested list to a numpy array~~
-* Add a bot opponent
+* ~~Add a bot opponent~~
 * Maybe Train a ML agent to act as the game’s opponent.
 * Add a difficulty selector
 * Implement a “self-play” mode (bot vs bot for training)
