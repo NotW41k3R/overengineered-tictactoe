@@ -1,3 +1,5 @@
+from parser import Parser
+parser = Parser()
 PLAYERS = ['X', 'O']
 SYMBOL_MAP={
     'X':1,
@@ -11,3 +13,8 @@ VALUE_MAP = {
 class Player:
     def __init__(self):
         self.player_number = 0
+
+    def get_move(self):
+        position = input(f"{VALUE_MAP[self.player_number]}'s turn: ").lower()
+        move = parser.parse_move(position)
+        return move
