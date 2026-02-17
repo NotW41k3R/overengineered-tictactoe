@@ -16,5 +16,7 @@ class Player:
 
     def get_move(self):
         position = input(f"{VALUE_MAP[self.player_number]}'s turn: ").lower()
+        if position=='exit':
+            return exit
         move = parser.parse_move(position)
         return move

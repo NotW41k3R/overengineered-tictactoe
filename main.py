@@ -52,7 +52,8 @@ else:
         while game_is_on:
             current_player = player_list[i]
             move = play_move(current_player, board)
-
+            if move == exit:
+                break
             if isinstance(current_player, Player):
                 while not move:
                     print("Please enter a valid move.")
