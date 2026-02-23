@@ -161,7 +161,6 @@ while running:
                             screen.blit(GAME_SYMBOLS[turn], GAME_SYMBOLS[turn].get_rect(center=(center_x, center_y)))
 
                             turn = not turn
-                            board.print_board()
 
                             if board.check_win():
                                 winner = turn
@@ -186,7 +185,6 @@ while running:
                     screen.blit(GAME_SYMBOLS[turn], GAME_SYMBOLS[turn].get_rect(center=(center_x, center_y)))
 
                     turn = not turn
-                    board.print_board()
 
                     if board.check_win():
                         winner = turn
