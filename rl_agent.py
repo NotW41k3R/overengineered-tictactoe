@@ -10,8 +10,8 @@ class RLAgent:
     def __init__(self):
         self.move_history = []
         self.path = "qtable.json"
-        self.learning_rate = 0.1
-        self.epsilon = 0.01
+        self.learning_rate = 0.5
+        self.epsilon = 0.2
         self.load_q_table(self.path)
         self.player_number = 0
 
@@ -97,6 +97,7 @@ class RLAgent:
                 if board.check_win():
                     winner_player = self.player_number
                     self.learn(1, winner_player)
+                    self.learn(-1, -winner_player)
                     break
 
                 if board.check_draw():
@@ -104,6 +105,6 @@ class RLAgent:
                     break
                 i = not i
 
-# agent = RLAgent()
-# agent.train_self_play(200000)
-# agent.save_q_table("qtable.json")
+agent = RLAgent()
+agent.train_self_play(50000)
+agent.save_q_table("qtable.json")
