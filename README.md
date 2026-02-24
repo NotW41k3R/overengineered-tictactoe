@@ -3,6 +3,10 @@
 This is the most overengineered version of TicTacToe i could think of, goal was to make a simple game of tictactoe, but now this version has...
 
 ## Features
+* **Reinforcement-Learning Agent**
+  A second bot powered by a Q-table that trains through thousands of self-play games.
+  It stores board states, learns from wins, ignores losing moves, and gradually improves its decision-making.
+  The Q-table is saved to disk so the agent gets smarter over time.
 
 * **Bot Player**
   A Defensive bot that defends threats across rows, columns and diagonals, it blocks all winning moves using vectorized evaluation.(Defense so good you might lose to it).
@@ -46,7 +50,8 @@ python main.py
 * ~~Maybe rewrite using OOP for fun~~
 * ~~Convert the board from a nested list to a numpy array~~
 * ~~Add a bot opponent~~
-* Maybe Train a ML agent to act as the game’s opponent.
+* ~~Add PyGame UI~~
+* ~~Train a RL agent to act as the game’s opponent.~~
 * Add a difficulty selector
 * Implement a “self-play” mode (bot vs bot for training)
 * Add a replay mode (watch a stored match move-by-move)
