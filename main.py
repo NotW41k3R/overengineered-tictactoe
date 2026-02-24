@@ -1,8 +1,9 @@
 from board import Board
 from player import Player
 from bot import Bot
+from rl_agent import RLAgent
 
-PLAYER_CHOICE = ['F', 'B']
+PLAYER_CHOICE = ['F', 'B', 'R']
 PLAYERS = ['X', 'O']
 VALUE_MAP = {
     1: 'X',
@@ -17,6 +18,9 @@ def play_move(player, board):
     elif isinstance(player, Bot):
         print(f"{VALUE_MAP[player.player_number]}'s turn")
         return player.get_move(board)
+    elif isinstance(player, RLAgent):
+        print(f"{VALUE_MAP[player.player_number]}'s turn")
+        return player.choose_action(board)
 
 # Initialise Board
 board = Board()
@@ -24,14 +28,16 @@ board.print_board()
 
 # Initialise Players
 player1 = Player()
-player_choice = input("Do want to play against a friend or bot? write F or B: ").upper()
+player_choice = input("Do want to play against a friend, rlbot or bot? write F or R or B: ").upper()
 if player_choice not in PLAYER_CHOICE:
-    print("Please pick Friend (F) or Bot(B)")
+    print("Please pick Friend (F) or or RLBot(R) or Bot(B)")
 else: 
     if player_choice == "F":
         player2 = Player()
-    else: 
+    elif player_choice == "B":
         player2 = Bot()
+    else:
+        player2 = RLAgent()
 
     # CHOOOSE X OR O
     player1_symbol = input("Choose X or O: ").upper()
@@ -68,8 +74,10 @@ else:
             if board.check_win():
                 print(f"{VALUE_MAP[current_player.player_number]} has won")
                 game_is_on = False
+                break
 
             if board.check_draw():
                 print("Its a Draw")
                 game_is_on = False
+                break
             i = not i

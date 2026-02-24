@@ -40,4 +40,8 @@ class Board:
         
     def check_draw(self):
         return not np.any(self.state == 0)
+    
+    def get_valid_moves(self):
+        valid_moves = np.argwhere(self.state == 0)
+        return [(r,c) for r, c in valid_moves]
 
